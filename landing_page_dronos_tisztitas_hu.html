@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drónos homlokzat‑ és üvegfelület‑tisztítás | Gyors, biztonságos, energiatakarékos</title>
+  <meta name="description" content="Professzionális drónos tisztítás ipari és kereskedelmi épületekhez. Gyors, biztonságos, állvány nélkül. Ingyenes felmérés és árajánlat 24 órán belül." />
+  <style>
+    :root {
+      --bg:#0f172a; /* slate-900 */
+      --panel:#111827; /* gray-900 */
+      --text:#e5e7eb; /* gray-200 */
+      --muted:#9ca3af; /* gray-400 */
+      --brand:#38bdf8; /* sky-400 */
+      --brand-dark:#0ea5e9; /* sky-500 */
+      --ok:#34d399; /* emerald-400 */
+      --warn:#fbbf24; /* amber-400 */
+      --danger:#f87171; /* red-400 */
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,#0b1226, var(--bg));color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{color:var(--brand-dark)}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);background:rgba(15,23,42,.7);border-bottom:1px solid rgba(148,163,184,.15);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo-mark{width:36px;height:36px;border-radius:10px;background:radial-gradient(120% 120% at 20% 10%, #67e8f9, #1e3a8a);box-shadow:0 10px 30px rgba(56,189,248,.35)}
+    .logo h1{font-size:18px;margin:0}
+    .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--brand);color:#0b1020;font-weight:700}
+    .cta:hover{background:var(--brand-dark)}
+
+    /* hero */
+    .hero{padding:72px 0 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero h2{font-size:40px;line-height:1.2;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 24px}
+    .panel{background:rgba(17,24,39,.6);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:20px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.35)}
+    .hero .form{display:grid;gap:10px}
+    .hero input,.hero select,.hero button, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.2);background:#0b1226;color:var(--text)}
+    .hero button{background:var(--brand);color:#0b1226;font-weight:700;border:none;cursor:pointer}
+    .hero button:hover{background:var(--brand-dark)}
+    .note{font-size:12px;color:var(--muted)}
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:rgba(17,24,39,.6);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px}
+    .card h3{margin:6px 0 8px;font-size:18px}
+    .kpi{display:flex;gap:10px;align-items:center;color:#a7f3d0}
+
+    /* steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{padding:18px;border-radius:var(--radius);border:1px dashed rgba(148,163,184,.25)}
+    .step-num{display:inline-block;background:var(--brand);color:#061127;border-radius:999px;width:28px;height:28px;text-align:center;line-height:28px;font-weight:800;margin-bottom:8px}
+
+    /* sections */
+    section{padding:42px 0}
+    h2.section-title{font-size:28px;margin:0 0 8px}
+    p.section-sub{margin:0 0 18px;color:var(--muted)}
+
+    /* industries */
+    .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    .logo-tile{padding:14px;text-align:center;border-radius:12px;border:1px solid rgba(148,163,184,.15);background:rgba(17,24,39,.6);font-size:14px;color:var(--muted)}
+
+    /* testimonials */
+    .testis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    blockquote{margin:0;padding:16px;border-radius:14px;background:rgba(17,24,39,.6);border:1px solid rgba(148,163,184,.15)}
+    blockquote p{margin:0 0 8px}
+    blockquote cite{font-style:normal;color:var(--muted);font-size:14px}
+
+    /* pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .price{padding:18px;border-radius:var(--radius);border:1px solid rgba(148,163,184,.2);background:linear-gradient(180deg, rgba(2,6,23,.7), rgba(17,24,39,.7))}
+    .price h3{margin:6px 0 2px}
+    .price .num{font-size:28px;font-weight:800;margin:4px 0}
+    .list{margin:10px 0 0;padding:0;list-style:none}
+    .list li{margin:8px 0;color:var(--muted)}
+
+    /* faq */
+    details{background:rgba(17,24,39,.6);border:1px solid rgba(148,163,184,.15);border-radius:12px;padding:12px}
+    summary{cursor:pointer;font-weight:700}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    footer{border-top:1px solid rgba(148,163,184,.15);padding:28px 0;color:var(--muted)}
+
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .features,.steps,.testis,.pricing,.faq{grid-template-columns:1fr}
+      .logos{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <h1>SkyWash Pro</h1>
+      </div>
+      <nav>
+        <a href="#ajanlat" class="cta">Ingyenes ajánlat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="badges">
+          <span class="badge">Állvány nélkül</span>
+          <span class="badge">Biztonságos</span>
+          <span class="badge">Energiatakarékos</span>
+        </div>
+        <h2>Drónos homlokzat‑ és üvegfelület‑tisztítás<br /> gyorsan, biztonságosan, leállás nélkül</h2>
+        <p>Professzionális svájci tisztító drónokkal dolgozunk. 6+ év tapasztalat, ipari minőség, auditálható eredmény. Ingyenes helyszíni felmérés és ajánlat 24 órán belül.</p>
+        <div class="features">
+          <div class="card"><h3>Akár 60% időmegtakarítás</h3><p>Állványozás és emelő nélkül, minimális lezárással.</p></div>
+          <div class="card"><h3>30–50% költségcsökkenés</h3><p>Kevesebb eszköz és munkaóra, kiszámítható egységárak.</p></div>
+          <div class="card"><h3>0 magasból történő munka</h3><p>Nincs kitettség, kevesebb kockázat és biztosítási teher.</p></div>
+        </div>
+      </div>
+      <div id="ajanlat" class="panel">
+        <h3>Kérjen ajánlatot</h3>
+        <form class="form" onsubmit="event.preventDefault(); alert('Köszönjük! Hamarosan jelentkezünk.');">
+          <input required type="text" name="name" placeholder="Név" />
+          <input required type="email" name="email" placeholder="E‑mail" />
+          <input type="tel" name="phone" placeholder="Telefon" />
+          <select name="service">
+            <option>Homlokzat tisztítás</option>
+            <option>Napelem tisztítás</option>
+            <option>Csarnok/rampsz egységek</option>
+            <option>Üvegfelületek</option>
+          </select>
+          <textarea rows="3" name="msg" placeholder="Röviden a feladatról (m², magasság, víz-hozzáférés)"></textarea>
+          <button type="submit">Ajánlat 24 órán belül</button>
+          <span class="note">Az űrlap elküldésével elfogadja az adatkezelési tájékoztatót.</span>
+        </form>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Miért drónos tisztítás?</h2>
+      <p class="section-sub">Gyorsabb, olcsóbb, biztonságosabb. Kevesebb víz és energia, kisebb CO₂‑lábnyom.</p>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><h3>Felmérés</h3><p>Fotó‑ és videófelmérés, hozzáférési pontok, víznyomás, m².</p></div>
+        <div class="step"><span class="step-num">2</span><h3>Technológia</h3><p>Svájci ipari drónok, lágy‑mosás, ozmózis víz, környezetbarát.</p></div>
+        <div class="step"><span class="step-num">3</span><h3>Végrehajtás</h3><p>Leállás nélkül, a terület minimális korlátozásával.</p></div>
+        <div class="step"><span class="step-num">4</span><h3>Átadás</h3><p>Dokumentált eredmény fotókkal, rövid jelentéssel.</p></div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Iparágak</h2>
+      <p class="section-sub">Ahol különösen nagy az előny állványozás nélkül.</p>
+      <div class="logos">
+        <div class="logo-tile">Irodaházak</div>
+        <div class="logo-tile">Bevásárlóközpontok</div>
+        <div class="logo-tile">Logisztika / raktár</div>
+        <div class="logo-tile">Gyárépületek</div>
+        <div class="logo-tile">Szállodák</div>
+        <div class="logo-tile">Közintézmények</div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Árazási irányok</h2>
+      <p class="section-sub">Átlátható egységárak. Pontos ajánlat felmérés után.</p>
+      <div class="pricing">
+        <div class="price">
+          <h3>m² alapú</h3>
+          <div class="num">nettó 600–1 200 Ft/m²</div>
+          <ul class="list">
+            <li>Felület típusától és szennyezettségtől függ</li>
+            <li>Min. projekt díj: 150 000 Ft</li>
+          </ul>
+        </div>
+        <div class="price">
+          <h3>Óradíj</h3>
+          <div class="num">nettó 28 000–45 000 Ft/óra</div>
+          <ul class="list">
+            <li>Kisebb, speciális beavatkozásoknál</li>
+            <li>Anyag + kiszállás külön</li>
+          </ul>
+        </div>
+        <div class="price">
+          <h3>Havi keretszerződés</h3>
+          <div class="num">egyedi</div>
+          <ul class="list">
+            <li>Portfóliókezelés, SLA, ütemezett takarítás</li>
+            <li>Volumen kedvezmények</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Az árak tájékoztató jellegűek. Végleges ár a helyszíni felmérést és víz‑/áram‑hozzáférést követően.</p>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Visszajelzések</h2>
+      <p class="section-sub">Rövid leállás. Látványos eredmény. Biztonságos folyamat.</p>
+      <div class="testis">
+        <blockquote>
+          <p>„Egynapos munka lett volna három.”</p>
+          <cite>Üzemeltetési vezető, logisztikai park</cite>
+        </blockquote>
+        <blockquote>
+          <p>„Állvány nélkül megoldották, nem zavarta a bérlőket.”</p>
+          <cite>Facility manager, irodaház</cite>
+        </blockquote>
+        <blockquote>
+          <p>„Jelentősen csökkent a kockázat és a biztosítási teher.”</p>
+          <cite>Munkavédelmi szakértő</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">GYIK</h2>
+      <div class="faq">
+        <details>
+          <summary>Milyen magasra tudnak tisztítani?</summary>
+          <p>Jellemzően 10–30 méter, esettől függően magasabb is. Pontos adat felméréskor.</p>
+        </details>
+        <details>
+          <summary>Milyen vízre és áramra van szükség?</summary>
+          <p>Ozmózis rendszerrel dolgozunk. Standard 230 V és vízvételi pont előny, alternatívát is hozunk.</p>
+        </details>
+        <details>
+          <summary>Zajos a folyamat?</summary>
+          <p>Rövid szakaszokban, nappali üzemi zajszinthez hasonló. Belső területeket nem zárunk le teljesen.</p>
+        </details>
+        <details>
+          <summary>Van dokumentáció az átadásról?</summary>
+          <p>Igen. Fotós jegyzőkönyv és rövid jelentés a takarított felületekről.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="container panel" id="kapcsolat">
+      <h2 class="section-title">Kapcsolat</h2>
+      <p class="section-sub">Kérjen visszahívást vagy küldjön e‑mailt. 24 órán belül válaszolunk.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <p><strong>Telefon:</strong> +36 XX XXX XXXX</p>
+          <p><strong>E‑mail:</strong> info@skywashpro.hu</p>
+          <p><strong>Szolgáltatási terület:</strong> Budapest és országosan</p>
+        </div>
+        <form class="form" onsubmit="event.preventDefault(); alert('Üzenet elküldve. Hamarosan jelentkezünk.');">
+          <input required type="text" placeholder="Név" />
+          <input required type="email" placeholder="E‑mail" />
+          <textarea rows="3" placeholder="Üzenet"></textarea>
+          <button type="submit">Üzenet küldése</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span>© <span id="y"></span> SkyWash Pro</span>
+        <span><a href="#">Adatkezelés</a> · <a href="#">ÁSZF</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
